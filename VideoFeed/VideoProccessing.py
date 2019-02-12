@@ -32,7 +32,8 @@ class VideoProcessor:
             cv2.imshow('frame',frame)
             eth_address = barcode.data.decode("utf-8") # decode qr code
             if(self.should_capture):
-                self.badge_dropper.send721Token(7,eth_address)
+                token_id = self.badge_dropper.getNexTokenID()
+                self.badge_dropper.send721Token(token_id,eth_address)
                 self.should_capture = False
                 self.sent = True
             if(self.sent):
