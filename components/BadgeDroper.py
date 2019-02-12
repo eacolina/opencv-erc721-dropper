@@ -29,4 +29,5 @@ class BadgeDropper:
         safe_transfer = self.tokenContract.functions.safeTransferFrom(self.w3Service.accountPBK,dest_address,token_ID) # build the function to send tx
         signed_tx = self.w3Service.sign_tx(safe_transfer)
         txReceipt = self.w3Service.eth.sendRawTransaction(signed_tx.rawTransaction)
-        print(txReceipt)
+        txHash = self.w3Service.w3.toHex(txReceipt)
+        print(txHash)
