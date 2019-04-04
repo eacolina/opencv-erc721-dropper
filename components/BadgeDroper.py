@@ -17,8 +17,7 @@ class BadgeDropper:
     def getOwnedTokens(self):
         self.tokenCount = self.tokenContract.functions.balanceOf(self.w3Service.accountPBK).call() # get amount of owned tokens
         if(self.tokenCount == 0):
-            print("The badge dropper ran out of tokens :(")
-            exit() 
+             raise NameError("The badge dropper ran out of tokens!!")
         self.ownedTokens = [] # list used to keep track of the owned tokens
         for i in range(0, self.tokenCount):
             # iterate through the ownedTokens array of the contract
